@@ -1,15 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X, Github, Linkedin, Mail, ExternalLink, ChevronRight, Code, Briefcase, Award, User } from 'lucide-react';
 
-// Custom cursor component
-// Find this in your code and REPLACE the entire CustomCursor component:
+// Custom cursor component (only on desktop)
 const CustomCursor = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isPointer, setIsPointer] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);  // ADD THIS LINE
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    // ADD THIS ENTIRE BLOCK
     const checkMobile = () => {
       setIsMobile('ontouchstart' in window || navigator.maxTouchPoints > 0);
     };
@@ -30,23 +28,19 @@ const CustomCursor = () => {
       );
     };
 
-    // CHANGE THIS - add if condition
     if (!isMobile) {
       window.addEventListener('mousemove', updatePosition);
       window.addEventListener('mouseover', updateCursor);
     }
 
     return () => {
-      window.removeEventListener('resize', checkMobile);  // ADD THIS
+      window.removeEventListener('resize', checkMobile);
       window.removeEventListener('mousemove', updatePosition);
       window.removeEventListener('mouseover', updateCursor);
     };
-  }, [isMobile]);  // CHANGE: add isMobile dependency
+  }, [isMobile]);
 
-  // ADD THIS - Don't render on mobile
   if (isMobile) return null;
-
-  // ... rest stays the same
 
   return (
     <>
@@ -147,7 +141,6 @@ const ThreeBackground = () => {
         p.draw();
       });
 
-      // Connect nearby particles
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
@@ -203,7 +196,6 @@ const Navigation = ({ currentPage, setCurrentPage }) => {
             SS
           </div>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {navItems.map((item) => {
               const Icon = item.icon;
@@ -224,7 +216,6 @@ const Navigation = ({ currentPage, setCurrentPage }) => {
             })}
           </div>
 
-          {/* Mobile Menu Button */}
           <button
             className="md:hidden text-white"
             onClick={() => setIsOpen(!isOpen)}
@@ -233,7 +224,6 @@ const Navigation = ({ currentPage, setCurrentPage }) => {
           </button>
         </div>
 
-        {/* Mobile Navigation */}
         {isOpen && (
           <div className="md:hidden mt-4 pb-4 space-y-2">
             {navItems.map((item) => {
@@ -263,7 +253,7 @@ const Navigation = ({ currentPage, setCurrentPage }) => {
   );
 };
 
-// Home Page Component
+// Home Page Component - NO SCROLL
 const HomePage = () => {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -272,40 +262,40 @@ const HomePage = () => {
   }, []);
 
   return (
-  <div className="h-screen flex items-center justify-center px-6 overflow-hidden">
-    <div className="max-w-4xl mx-auto text-center">
+    <div className="fixed inset-0 flex items-center justify-center px-6 overflow-hidden">
+      <div className="max-w-4xl mx-auto text-center">
         <div
           className={`transform transition-all duration-1000 ${
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
           }`}
         >
-          <div className="mb-6 inline-block">
-            <div className="w-32 h-32 md:w-40 md:h-40 rounded-full bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 p-1 animate-pulse">
+          <div className="mb-8 inline-block">
+            <div className="w-36 h-36 md:w-44 md:h-44 rounded-full bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 p-1 animate-pulse">
               <div className="w-full h-full rounded-full bg-slate-900 flex items-center justify-center text-4xl md:text-5xl font-bold text-white">
                 SS
               </div>
             </div>
           </div>
 
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent leading-tight" style={{ paddingBottom: '0.1em' }}>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent leading-tight pb-2">
             Satyam Soni
           </h1>
 
-          <p className="text-lg md:text-xl lg:text-2xl text-slate-300 mb-4 leading-relaxed">
+          <p className="text-lg md:text-xl lg:text-2xl text-slate-300 mb-4 leading-relaxed pb-1">
             B.Tech in Biochemical Engineering & Biotechnology
           </p>
 
-          <p className="text-base md:text-lg text-indigo-400 mb-8 leading-relaxed">
+          <p className="text-base md:text-lg text-indigo-400 mb-8 leading-relaxed pb-1">
             Indian Institute of Technology Delhi | CGPA: 6.02
           </p>
 
-          <p className="text-base md:text-lg text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed" style={{ paddingBottom: '0.2em' }}>
+          <p className="text-base md:text-lg text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed pb-2">
             Full-Stack Developer | ML Engineer | Cloud & DevOps Enthusiast
             <br />
             Specializing in scalable systems, microservices architecture, and AI-powered solutions
           </p>
 
-          <div className="flex flex-wrap gap-4 justify-center mb-12">
+          <div className="flex flex-wrap gap-3 justify-center">
             {['React', 'TypeScript', 'Node.js', 'AWS', 'Docker', 'Python', 'TensorFlow', 'Kubernetes'].map((tech, i) => (
               <span
                 key={tech}
@@ -316,47 +306,47 @@ const HomePage = () => {
               </span>
             ))}
           </div>
-                  </div>
-                </div>
-              </div>
-            );
-          };
+        </div>
+      </div>
+    </div>
+  );
+};
 
-          // Projects Page Component
-          const ProjectsPage = () => {
-            const projects = [
-              {
-                title: 'Real-Time System Metrics Monitoring Pipeline',
-                period: 'July - Aug 2025',
-                description: 'End-to-end data pipeline with Python, Amazon Kinesis, SQL Server, and Power BI for real-time system monitoring',
-                tech: ['Python', 'AWS Kinesis', 'SQL Server', 'Power BI'],
-                achievement: '95% faster monitoring, near-instant insights',
-              },
-              {
-                title: 'Spring Boot Microservices E-Commerce Platform',
-                period: 'May - Jun 2025',
-                description: 'Scalable e-commerce platform with microservices architecture, service discovery, and event-driven workflows',
-                tech: ['Spring Boot', 'Kafka', 'Docker', 'MongoDB', 'Kubernetes'],
-                achievement: 'Secure authentication, real-time dashboards, fault-tolerant deployment',
-              },
-              {
-                title: 'Full-Stack Employee Management Web App',
-                period: 'Feb - Apr 2025',
-                description: 'Complete CI/CD pipeline with TypeScript and ReactJS for automated testing and deployment',
-                tech: ['TypeScript', 'ReactJS', 'AWS', 'CircleCI', 'Ansible', 'Prometheus'],
-                achievement: 'Automated deployments, enhanced observability',
-              },
-              {
-                title: 'High-Throughput Inference Systems for Video Analytics',
-                period: 'Jan - Feb 2025',
-                description: 'RF-DETR system in C++ with TensorRT for real-time 1080p object detection',
-                tech: ['C++', 'NVIDIA TensorRT', 'CUDA', 'ONNX'],
-                achievement: '40 FPS throughput, 3× efficiency improvement, 60% latency reduction',
-              },
-            ];
+// Projects Page Component
+const ProjectsPage = () => {
+  const projects = [
+    {
+      title: 'Real-Time System Metrics Monitoring Pipeline',
+      period: 'July - Aug 2025',
+      description: 'End-to-end data pipeline with Python, Amazon Kinesis, SQL Server, and Power BI for real-time system monitoring',
+      tech: ['Python', 'AWS Kinesis', 'SQL Server', 'Power BI'],
+      achievement: '95% faster monitoring, near-instant insights',
+    },
+    {
+      title: 'Spring Boot Microservices E-Commerce Platform',
+      period: 'May - Jun 2025',
+      description: 'Scalable e-commerce platform with microservices architecture, service discovery, and event-driven workflows',
+      tech: ['Spring Boot', 'Kafka', 'Docker', 'MongoDB', 'Kubernetes'],
+      achievement: 'Secure authentication, real-time dashboards, fault-tolerant deployment',
+    },
+    {
+      title: 'Full-Stack Employee Management Web App',
+      period: 'Feb - Apr 2025',
+      description: 'Complete CI/CD pipeline with TypeScript and ReactJS for automated testing and deployment',
+      tech: ['TypeScript', 'ReactJS', 'AWS', 'CircleCI', 'Ansible', 'Prometheus'],
+      achievement: 'Automated deployments, enhanced observability',
+    },
+    {
+      title: 'High-Throughput Inference Systems for Video Analytics',
+      period: 'Jan - Feb 2025',
+      description: 'RF-DETR system in C++ with TensorRT for real-time 1080p object detection',
+      tech: ['C++', 'NVIDIA TensorRT', 'CUDA', 'ONNX'],
+      achievement: '40 FPS throughput, 3× efficiency improvement, 60% latency reduction',
+    },
+  ];
 
   return (
-    <div className="min-h-screen pt-32 pb-20 px-6">
+    <div className="min-h-screen pt-32 pb-24 px-6">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-5xl font-bold mb-12 bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
           Projects
@@ -367,7 +357,6 @@ const HomePage = () => {
             <div
               key={idx}
               className="group bg-slate-800/50 backdrop-blur-sm rounded-xl p-6 border border-slate-700 hover:border-indigo-500 transition-all duration-300 hover:transform hover:scale-105"
-              style={{ animationDelay: `${idx * 0.1}s` }}
             >
               <div className="flex items-start justify-between mb-4">
                 <h3 className="text-xl font-bold text-white group-hover:text-indigo-400 transition-colors">
@@ -375,7 +364,7 @@ const HomePage = () => {
                 </h3>
                 <ExternalLink
                   size={20}
-                  className="text-slate-400 group-hover:text-indigo-400 transition-colors"
+                  className="text-slate-400 group-hover:text-indigo-400 transition-colors flex-shrink-0"
                 />
               </div>
 
@@ -466,13 +455,12 @@ const ExperiencePage = () => {
   };
 
   return (
-    <div className="min-h-screen pt-32 pb-20 px-6">
+    <div className="min-h-screen pt-32 pb-24 px-6">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-5xl font-bold mb-12 bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
           Experience & Achievements
         </h2>
 
-        {/* Internship */}
         <div className="mb-12">
           <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl p-8 border border-slate-700">
             <h3 className="text-2xl font-bold text-white mb-2">
@@ -490,7 +478,6 @@ const ExperiencePage = () => {
           </div>
         </div>
 
-        {/* Achievements */}
         <div className="mb-12">
           <h3 className="text-3xl font-bold mb-6 text-white">Certifications & Achievements</h3>
           <div className="grid md:grid-cols-2 gap-4">
@@ -514,7 +501,6 @@ const ExperiencePage = () => {
           </div>
         </div>
 
-        {/* Leadership */}
         <div>
           <h3 className="text-3xl font-bold mb-6 text-white">Leadership & Responsibilities</h3>
           <div className="space-y-6">
@@ -562,64 +548,70 @@ export default function PortfolioApp() {
   }, []);
 
   return (
-    <div className={`relative min-h-screen text-white overflow-x-hidden ${!isMobile ? 'cursor-none' : ''}`}>
+    <div className={`relative h-screen overflow-hidden text-white ${!isMobile ? 'cursor-none' : ''}`}>
       <style>{`
-        /* Hide scrollbar for projects and experience pages only */
         .scrollable-content::-webkit-scrollbar {
-          width: 6px;
+          width: 8px;
         }
         .scrollable-content::-webkit-scrollbar-track {
           background: rgba(15, 23, 42, 0.5);
         }
         .scrollable-content::-webkit-scrollbar-thumb {
           background: rgba(99, 102, 241, 0.5);
-          border-radius: 3px;
+          border-radius: 4px;
         }
         .scrollable-content::-webkit-scrollbar-thumb:hover {
           background: rgba(99, 102, 241, 0.7);
         }
       `}</style>
+      
       <CustomCursor />
       <ThreeBackground />
       <Navigation currentPage={currentPage} setCurrentPage={setCurrentPage} />
 
-      <div className="relative z-10">
-        {currentPage === 'home' && <HomePage />}
-        {currentPage === 'projects' && (
-          <div className="h-screen overflow-y-auto scrollable-content pb-32">
-            <ProjectsPage />
-          </div>
-        )}
-        {currentPage === 'experience' && (
-          <div className="h-screen overflow-y-auto scrollable-content pb-32">
-            <ExperiencePage />
-          </div>
-        )}
-      </div>
+      {currentPage === 'home' && <HomePage />}
+      
+      {currentPage === 'projects' && (
+        <div className="fixed inset-0 overflow-y-auto scrollable-content">
+          <ProjectsPage />
+        </div>
+      )}
+      
+      {currentPage === 'experience' && (
+        <div className="fixed inset-0 overflow-y-auto scrollable-content">
+          <ExperiencePage />
+        </div>
+      )}
 
-      {/* Footer */}
-      <footer className="relative z-10 border-t border-slate-800 bg-slate-900/80 backdrop-blur-lg">
-        <div className="max-w-7xl mx-auto px-6 py-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-slate-400 text-sm">
+      <footer className="fixed bottom-0 left-0 right-0 z-30 border-t border-slate-800 bg-slate-900/95 backdrop-blur-lg">
+        <div className="max-w-7xl mx-auto px-4 py-2">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-2">
+            <p className="text-slate-400 text-xs text-center md:text-left">
               © 2025 Satyam Soni. Built with React & Tailwind CSS.
             </p>
-            <div className="flex gap-4">
+            <div className="flex gap-6">
               <a
-                href="#"
-                className="text-slate-400 hover:text-indigo-400 transition-colors"
+                href="https://github.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-400 hover:text-indigo-400 transition-colors transform hover:scale-110"
+                aria-label="GitHub"
               >
                 <Github size={20} />
               </a>
               <a
-                href="#"
-                className="text-slate-400 hover:text-indigo-400 transition-colors"
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-400 hover:text-indigo-400 transition-colors transform hover:scale-110"
+                aria-label="LinkedIn"
               >
                 <Linkedin size={20} />
               </a>
               <a
-                href="#"
-                className="text-slate-400 hover:text-indigo-400 transition-colors"
+                href="mailto:your.email@example.com"
+                className="text-slate-400 hover:text-indigo-400 transition-colors transform hover:scale-110"
+                aria-label="Email"
               >
                 <Mail size={20} />
               </a>
