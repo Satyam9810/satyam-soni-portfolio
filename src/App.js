@@ -272,8 +272,8 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-6 pt-24">
-      <div className="max-w-4xl mx-auto text-center">
+  <div className="h-screen flex items-center justify-center px-6 overflow-hidden">
+    <div className="max-w-4xl mx-auto text-center">
         <div
           className={`transform transition-all duration-1000 ${
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
@@ -287,19 +287,19 @@ const HomePage = () => {
             </div>
           </div>
 
-          <h1 className="text-6xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent leading-tight" style={{ paddingBottom: '0.1em' }}>
             Satyam Soni
           </h1>
 
-          <p className="text-xl md:text-2xl text-slate-300 mb-4">
+          <p className="text-lg md:text-xl lg:text-2xl text-slate-300 mb-4 leading-relaxed">
             B.Tech in Biochemical Engineering & Biotechnology
           </p>
 
-          <p className="text-lg text-indigo-400 mb-8">
-            Indian Institute of Technology Delhi | CGPA: 7.52
+          <p className="text-base md:text-lg text-indigo-400 mb-8 leading-relaxed">
+            Indian Institute of Technology Delhi | CGPA: 6.02
           </p>
 
-          <p className="text-lg text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base md:text-lg text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed" style={{ paddingBottom: '0.2em' }}>
             Full-Stack Developer | ML Engineer | Cloud & DevOps Enthusiast
             <br />
             Specializing in scalable systems, microservices architecture, and AI-powered solutions
@@ -316,65 +316,44 @@ const HomePage = () => {
               </span>
             ))}
           </div>
+                  </div>
+                </div>
+              </div>
+            );
+          };
 
-          <div className="flex gap-6 justify-center">
-            <a
-              href="#"
-              className="group px-8 py-4 bg-indigo-500 hover:bg-indigo-600 rounded-lg transition-all duration-300 flex items-center gap-2 transform hover:scale-105"
-            >
-              <Mail size={20} />
-              Contact Me
-              <ChevronRight
-                size={20}
-                className="transform group-hover:translate-x-1 transition-transform"
-              />
-            </a>
-            <a
-              href="#"
-              className="px-8 py-4 bg-slate-800 hover:bg-slate-700 rounded-lg transition-all duration-300 flex items-center gap-2 transform hover:scale-105"
-            >
-              <Github size={20} />
-              GitHub
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-// Projects Page Component
-const ProjectsPage = () => {
-  const projects = [
-    {
-      title: 'Real-Time System Metrics Monitoring Pipeline',
-      period: 'July - Aug 2025',
-      description: 'End-to-end data pipeline with Python, Amazon Kinesis, SQL Server, and Power BI for real-time system monitoring',
-      tech: ['Python', 'AWS Kinesis', 'SQL Server', 'Power BI'],
-      achievement: '95% faster monitoring, near-instant insights',
-    },
-    {
-      title: 'Spring Boot Microservices E-Commerce Platform',
-      period: 'May - Jun 2025',
-      description: 'Scalable e-commerce platform with microservices architecture, service discovery, and event-driven workflows',
-      tech: ['Spring Boot', 'Kafka', 'Docker', 'MongoDB', 'Kubernetes'],
-      achievement: 'Secure authentication, real-time dashboards, fault-tolerant deployment',
-    },
-    {
-      title: 'Full-Stack Employee Management Web App',
-      period: 'Feb - Apr 2025',
-      description: 'Complete CI/CD pipeline with TypeScript and ReactJS for automated testing and deployment',
-      tech: ['TypeScript', 'ReactJS', 'AWS', 'CircleCI', 'Ansible', 'Prometheus'],
-      achievement: 'Automated deployments, enhanced observability',
-    },
-    {
-      title: 'High-Throughput Inference Systems for Video Analytics',
-      period: 'Jan - Feb 2025',
-      description: 'RF-DETR system in C++ with TensorRT for real-time 1080p object detection',
-      tech: ['C++', 'NVIDIA TensorRT', 'CUDA', 'ONNX'],
-      achievement: '40 FPS throughput, 3× efficiency improvement, 60% latency reduction',
-    },
-  ];
+          // Projects Page Component
+          const ProjectsPage = () => {
+            const projects = [
+              {
+                title: 'Real-Time System Metrics Monitoring Pipeline',
+                period: 'July - Aug 2025',
+                description: 'End-to-end data pipeline with Python, Amazon Kinesis, SQL Server, and Power BI for real-time system monitoring',
+                tech: ['Python', 'AWS Kinesis', 'SQL Server', 'Power BI'],
+                achievement: '95% faster monitoring, near-instant insights',
+              },
+              {
+                title: 'Spring Boot Microservices E-Commerce Platform',
+                period: 'May - Jun 2025',
+                description: 'Scalable e-commerce platform with microservices architecture, service discovery, and event-driven workflows',
+                tech: ['Spring Boot', 'Kafka', 'Docker', 'MongoDB', 'Kubernetes'],
+                achievement: 'Secure authentication, real-time dashboards, fault-tolerant deployment',
+              },
+              {
+                title: 'Full-Stack Employee Management Web App',
+                period: 'Feb - Apr 2025',
+                description: 'Complete CI/CD pipeline with TypeScript and ReactJS for automated testing and deployment',
+                tech: ['TypeScript', 'ReactJS', 'AWS', 'CircleCI', 'Ansible', 'Prometheus'],
+                achievement: 'Automated deployments, enhanced observability',
+              },
+              {
+                title: 'High-Throughput Inference Systems for Video Analytics',
+                period: 'Jan - Feb 2025',
+                description: 'RF-DETR system in C++ with TensorRT for real-time 1080p object detection',
+                tech: ['C++', 'NVIDIA TensorRT', 'CUDA', 'ONNX'],
+                achievement: '40 FPS throughput, 3× efficiency improvement, 60% latency reduction',
+              },
+            ];
 
   return (
     <div className="min-h-screen pt-32 pb-20 px-6">
@@ -573,15 +552,39 @@ export default function PortfolioApp() {
   const [currentPage, setCurrentPage] = useState('home');
 
   return (
-    <div className="relative min-h-screen text-white overflow-hidden cursor-none">
+    <div className={`relative min-h-screen text-white overflow-x-hidden ${!isMobile ? 'cursor-none' : ''}`}>
+      <style>{`
+        /* Hide scrollbar for projects and experience pages only */
+        .scrollable-content::-webkit-scrollbar {
+          width: 6px;
+        }
+        .scrollable-content::-webkit-scrollbar-track {
+          background: rgba(15, 23, 42, 0.5);
+        }
+        .scrollable-content::-webkit-scrollbar-thumb {
+          background: rgba(99, 102, 241, 0.5);
+          border-radius: 3px;
+        }
+        .scrollable-content::-webkit-scrollbar-thumb:hover {
+          background: rgba(99, 102, 241, 0.7);
+        }
+      `}</style>
       <CustomCursor />
       <ThreeBackground />
       <Navigation currentPage={currentPage} setCurrentPage={setCurrentPage} />
 
       <div className="relative z-10">
         {currentPage === 'home' && <HomePage />}
-        {currentPage === 'projects' && <ProjectsPage />}
-        {currentPage === 'experience' && <ExperiencePage />}
+        {currentPage === 'projects' && (
+          <div className="h-screen overflow-y-auto scrollable-content pb-32">
+            <ProjectsPage />
+          </div>
+        )}
+        {currentPage === 'experience' && (
+          <div className="h-screen overflow-y-auto scrollable-content pb-32">
+            <ExperiencePage />
+          </div>
+        )}
       </div>
 
       {/* Footer */}
