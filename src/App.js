@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Menu, X, Github, Linkedin, Mail, ExternalLink, ChevronRight, Code, Briefcase, Award, User, Code2, FileCode, Server, Cloud, Package, FileCode2, Brain, Box} from 'lucide-react';
+import { Database, GitBranch, Box, Cpu, Activity, Menu, X, Github, Linkedin, Mail, ExternalLink, ChevronRight, Code, Briefcase, Award, User, Code2, FileCode, Server, Cloud, Package, FileCode2, Brain, Box} from 'lucide-react';
 
 // Custom cursor component (only on desktop)
 const CustomCursor = () => {
@@ -263,12 +263,19 @@ const HomePage = () => {
   { name: 'React', icon: Code2 },
   { name: 'TypeScript', icon: FileCode },
   { name: 'Node.js', icon: Server },
+  { name: 'Python', icon: Code },
+  { name: 'C++', icon: Code2 },
+  { name: 'PostgreSQL', icon: Database },
+  { name: 'MongoDB', icon: Database },
   { name: 'AWS', icon: Cloud },
   { name: 'Docker', icon: Package },
-  { name: 'Python', icon: FileCode2 },
+  { name: 'Kubernetes', icon: Box },
   { name: 'TensorFlow', icon: Brain },
-  { name: 'Kubernetes', icon: Box }
+  { name: 'Kafka', icon: Activity },
+  { name: 'Spring Boot', icon: Server },
+  { name: 'Git', icon: GitBranch }
 ];
+
 
   useEffect(() => {
     setIsVisible(true);
