@@ -550,6 +550,16 @@ const ExperiencePage = () => {
 // Main App Component
 export default function PortfolioApp() {
   const [currentPage, setCurrentPage] = useState('home');
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile('ontouchstart' in window || navigator.maxTouchPoints > 0);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   return (
     <div className={`relative min-h-screen text-white overflow-x-hidden ${!isMobile ? 'cursor-none' : ''}`}>
