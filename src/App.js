@@ -621,7 +621,7 @@ export default function PortfolioApp() {
                 <Linkedin size={20} />
               </a>
               <a
-                href="satyam.soni.iitd@gmail.com"
+                href="mailto:satyam.soni.iitd@gmail.com"
                 className="text-slate-400 hover:text-indigo-400 transition-colors transform hover:scale-110"
                 aria-label="Email"
               >
