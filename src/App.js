@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Menu, X, Github, Linkedin, Mail, ExternalLink, ChevronRight, Code, Briefcase, Award, User } from 'lucide-react';
+import { Menu, X, Github, Linkedin, Mail, ExternalLink, ChevronRight, Code, Briefcase, Award, User, Code2, FileCode, Server, Cloud, Package, FileCode2, Brain, Box} from 'lucide-react';
 
 // Custom cursor component (only on desktop)
 const CustomCursor = () => {
@@ -259,6 +259,16 @@ const Navigation = ({ currentPage, setCurrentPage }) => {
 // Home Page Component - NO SCROLL
 const HomePage = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const technologies = [
+  { name: 'React', icon: Code2 },
+  { name: 'TypeScript', icon: FileCode },
+  { name: 'Node.js', icon: Server },
+  { name: 'AWS', icon: Cloud },
+  { name: 'Docker', icon: Package },
+  { name: 'Python', icon: FileCode2 },
+  { name: 'TensorFlow', icon: Brain },
+  { name: 'Kubernetes', icon: Box }
+];
 
   useEffect(() => {
     setIsVisible(true);
@@ -302,15 +312,19 @@ const HomePage = () => {
           </p>
 
           <div className="flex flex-wrap gap-2 md:gap-3 justify-center px-2 pb-4">
-            {['React', 'TypeScript', 'Node.js', 'AWS', 'Docker', 'Python', 'TensorFlow', 'Kubernetes'].map((tech, i) => (
-              <span
-                key={tech}
-                className="px-3 py-1.5 md:px-4 md:py-2 bg-slate-800/50 rounded-full text-xs md:text-sm text-indigo-300 border border-indigo-500/30 hover:border-indigo-500 transition-all duration-300"
-                style={{ animationDelay: `${i * 0.1}s` }}
-              >
-                {tech}
-              </span>
-            ))}
+            {technologies.map((tech, i) => {
+              const Icon = tech.icon;
+              return (
+                <span
+                  key={tech.name}
+                  className="px-3 py-1.5 md:px-4 md:py-2 bg-slate-800/50 rounded-full text-xs md:text-sm text-indigo-300 border border-indigo-500/30 hover:border-indigo-500 transition-all duration-300 flex items-center gap-1.5 md:gap-2"
+                  style={{ animationDelay: `${i * 0.1}s` }}
+                >
+                  <Icon size={14} className="md:w-4 md:h-4" />
+                  {tech.name}
+                </span>
+              );
+            })}
           </div>
         </div>
       </div>
