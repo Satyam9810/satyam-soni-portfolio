@@ -2,11 +2,21 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X, Github, Linkedin, Mail, ExternalLink, ChevronRight, Code, Briefcase, Award, User } from 'lucide-react';
 
 // Custom cursor component
+// Find this in your code and REPLACE the entire CustomCursor component:
 const CustomCursor = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isPointer, setIsPointer] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);  // ADD THIS LINE
 
   useEffect(() => {
+    // ADD THIS ENTIRE BLOCK
+    const checkMobile = () => {
+      setIsMobile('ontouchstart' in window || navigator.maxTouchPoints > 0);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
     const updatePosition = (e) => {
       setPosition({ x: e.clientX, y: e.clientY });
     };
@@ -20,14 +30,23 @@ const CustomCursor = () => {
       );
     };
 
-    window.addEventListener('mousemove', updatePosition);
-    window.addEventListener('mouseover', updateCursor);
+    // CHANGE THIS - add if condition
+    if (!isMobile) {
+      window.addEventListener('mousemove', updatePosition);
+      window.addEventListener('mouseover', updateCursor);
+    }
 
     return () => {
+      window.removeEventListener('resize', checkMobile);  // ADD THIS
       window.removeEventListener('mousemove', updatePosition);
       window.removeEventListener('mouseover', updateCursor);
     };
-  }, []);
+  }, [isMobile]);  // CHANGE: add isMobile dependency
+
+  // ADD THIS - Don't render on mobile
+  if (isMobile) return null;
+
+  // ... rest stays the same
 
   return (
     <>
@@ -253,7 +272,7 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-6">
+    <div className="min-h-screen flex items-center justify-center px-6 pt-24">
       <div className="max-w-4xl mx-auto text-center">
         <div
           className={`transform transition-all duration-1000 ${
@@ -261,8 +280,8 @@ const HomePage = () => {
           }`}
         >
           <div className="mb-6 inline-block">
-            <div className="w-32 h-32 rounded-full bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 p-1 animate-pulse">
-              <div className="w-full h-full rounded-full bg-slate-900 flex items-center justify-center text-5xl font-bold text-white">
+            <div className="w-32 h-32 md:w-40 md:h-40 rounded-full bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 p-1 animate-pulse">
+              <div className="w-full h-full rounded-full bg-slate-900 flex items-center justify-center text-4xl md:text-5xl font-bold text-white">
                 SS
               </div>
             </div>
@@ -277,7 +296,7 @@ const HomePage = () => {
           </p>
 
           <p className="text-lg text-indigo-400 mb-8">
-            Indian Institute of Technology Delhi | CGPA: 6.02
+            Indian Institute of Technology Delhi | CGPA: 7.52
           </p>
 
           <p className="text-lg text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed">
