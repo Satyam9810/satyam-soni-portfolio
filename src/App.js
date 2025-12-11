@@ -286,7 +286,7 @@ const HomePage = () => {
 
           
 
-          <p className="text-sm sm:text-sm md:text-base text-indigo-400 mb-3 md:mb-6 leading-relaxed pb-1">
+          <p className="text-2xl sm:text-sm md:text-base text-indigo-400 mb-3 md:mb-6 leading-relaxed pb-1">
             <b>Indian Institute of Technology Delhi</b> | CGPA: 7.52
           </p>
 
@@ -358,7 +358,7 @@ const ProjectsPage = () => {
   return (
     <div className="min-h-screen pt-32 pb-24 px-6">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+        <h2 className="text-4xl font-bold mb-12 bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
           Projects
         </h2>
 
