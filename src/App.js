@@ -300,7 +300,7 @@ const HomePage = () => {
             <b>Indian Institute of Technology Delhi</b>
           </p> */}
 
-          <p className="text-4xl sm:text-base md:text-lg lg:text-xl text-slate-300 mb-2 md:mb-3 leading-relaxed pb-1 px-2">
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-300 mb-2 md:mb-3 leading-relaxed pb-1 px-2">
             B.Tech - Indian Institute of Technology Delhi
           </p>
 
