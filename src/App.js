@@ -1,5 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Database, GitBranch, Box, Cpu, Activity, Menu, X, Github, Linkedin, Mail, ExternalLink, ChevronRight, Code, Briefcase, Award, User, Code2, FileCode, Server, Cloud, Package, FileCode2, Brain, Box} from 'lucide-react';
+import { 
+  Menu, X, Github, Linkedin, Mail, ExternalLink, ChevronRight, 
+  Code, Briefcase, Award, User, Code2, FileCode, Server, Cloud, 
+  Package, Database, GitBranch, Box, Cpu, Activity, Brain 
+} from 'lucide-react';
 
 // Custom cursor component (only on desktop)
 const CustomCursor = () => {
