@@ -192,9 +192,12 @@ const Navigation = ({ currentPage, setCurrentPage }) => {
     <nav className="fixed top-0 left-0 right-0 z-40 bg-slate-900/90 backdrop-blur-lg border-b border-slate-800">
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-3">
         <div className="flex items-center justify-between">
-          <div className="text-xl md:text-2xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+          <button
+            onClick={() => setCurrentPage('home')}
+            className="text-xl md:text-2xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent hover:from-indigo-300 hover:to-purple-300 transition-all duration-300"
+          >
             SS
-          </div>
+          </button>
 
           <div className="hidden md:flex items-center gap-8">
             {navItems.map((item) => {
@@ -277,16 +280,18 @@ const HomePage = () => {
             </div>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 md:mb-6 bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent leading-tight pb-2">
+          <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 md:mb-6 bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent leading-tight pb-2">
             Satyam Soni
           </h1>
 
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-300 mb-2 md:mb-3 leading-relaxed pb-1 px-2">
-            B.Tech in Biochemical Engineering & Biotechnology
+          
+
+          <p className="text-sm sm:text-sm md:text-base text-indigo-400 mb-3 md:mb-6 leading-relaxed pb-1">
+            <b>Indian Institute of Technology Delhi</b> | CGPA: 7.52
           </p>
 
-          <p className="text-xs sm:text-sm md:text-base text-indigo-400 mb-3 md:mb-6 leading-relaxed pb-1">
-            Indian Institute of Technology Delhi | CGPA: 6.02
+          <p className="text-xs sm:text-base md:text-lg lg:text-xl text-slate-300 mb-2 md:mb-3 leading-relaxed pb-1 px-2">
+            B.Tech in Biochemical Engineering & Biotechnology
           </p>
 
           <p className="text-sm sm:text-base md:text-base text-slate-400 mb-4 md:mb-8 max-w-2xl mx-auto leading-relaxed pb-2 px-2">
@@ -322,6 +327,7 @@ const ProjectsPage = () => {
       description: 'End-to-end data pipeline with Python, Amazon Kinesis, SQL Server, and Power BI for real-time system monitoring',
       tech: ['Python', 'AWS Kinesis', 'SQL Server', 'Power BI'],
       achievement: '95% faster monitoring, near-instant insights',
+      githubUrl: 'https://github.com/Satyam9810/-System-Metrics-Monitoring-', 
     },
     {
       title: 'Spring Boot Microservices E-Commerce Platform',
@@ -329,6 +335,7 @@ const ProjectsPage = () => {
       description: 'Scalable e-commerce platform with microservices architecture, service discovery, and event-driven workflows',
       tech: ['Spring Boot', 'Kafka', 'Docker', 'MongoDB', 'Kubernetes'],
       achievement: 'Secure authentication, real-time dashboards, fault-tolerant deployment',
+      githubUrl: 'https://github.com/Satyam9810/Microservices-E-Commerce', 
     },
     {
       title: 'Full-Stack Employee Management Web App',
@@ -336,6 +343,7 @@ const ProjectsPage = () => {
       description: 'Complete CI/CD pipeline with TypeScript and ReactJS for automated testing and deployment',
       tech: ['TypeScript', 'ReactJS', 'AWS', 'CircleCI', 'Ansible', 'Prometheus'],
       achievement: 'Automated deployments, enhanced observability',
+      githubUrl: 'https://github.com/Satyam9810/-Employee-Management-Web-App', 
     },
     {
       title: 'High-Throughput Inference Systems for Video Analytics',
@@ -343,21 +351,24 @@ const ProjectsPage = () => {
       description: 'RF-DETR system in C++ with TensorRT for real-time 1080p object detection',
       tech: ['C++', 'NVIDIA TensorRT', 'CUDA', 'ONNX'],
       achievement: '40 FPS throughput, 3× efficiency improvement, 60% latency reduction',
+      githubUrl: 'https://github.com/Satyam9810/Video-Analytics', 
     },
   ];
-
+// text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 md:mb-6 bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent leading-tight pb-2
   return (
     <div className="min-h-screen pt-32 pb-24 px-6">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-5xl font-bold mb-12 bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+        <h2 className="text-4xl bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
           Projects
         </h2>
 
         <div className="grid md:grid-cols-2 gap-6">
           {projects.map((project, idx) => (
-            <div
-              key={idx}
-              className="group bg-slate-800/50 backdrop-blur-sm rounded-xl p-6 border border-slate-700 hover:border-indigo-500 transition-all duration-300 hover:transform hover:scale-105"
+            <a key={idx}
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group bg-slate-800/50 backdrop-blur-sm rounded-xl p-6 border border-slate-700 hover:border-indigo-500 transition-all duration-300 hover:transform hover:scale-105 block"
             >
               <div className="flex items-start justify-between mb-4">
                 <h3 className="text-xl font-bold text-white group-hover:text-indigo-400 transition-colors">
@@ -389,7 +400,7 @@ const ProjectsPage = () => {
                   {project.achievement}
                 </p>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>
@@ -458,7 +469,7 @@ const ExperiencePage = () => {
   return (
     <div className="min-h-screen pt-32 pb-24 px-6">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-5xl font-bold mb-12 bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+        <h2 className="text-4xl font-bold mb-12 bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
           Experience & Achievements
         </h2>
 
@@ -588,11 +599,11 @@ export default function PortfolioApp() {
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex flex-col md:flex-row items-center justify-between gap-3">
             <p className="text-slate-400 text-xs md:text-sm text-center md:text-left">
-              © 2025 Satyam Soni. Built with React & Tailwind CSS.
+              © 2025 Created by Satyam Soni.
             </p>
             <div className="flex gap-6">
               <a
-                href="https://github.com"
+                href="https://github.com/Satyam9810"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-slate-400 hover:text-indigo-400 transition-colors transform hover:scale-110"
@@ -601,7 +612,7 @@ export default function PortfolioApp() {
                 <Github size={20} />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/satyamsoni-/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-slate-400 hover:text-indigo-400 transition-colors transform hover:scale-110"
@@ -610,7 +621,7 @@ export default function PortfolioApp() {
                 <Linkedin size={20} />
               </a>
               <a
-                href="mailto:your.email@example.com"
+                href="satyam.soni.iitd@gmail.com"
                 className="text-slate-400 hover:text-indigo-400 transition-colors transform hover:scale-110"
                 aria-label="Email"
               >
