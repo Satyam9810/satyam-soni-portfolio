@@ -189,10 +189,10 @@ const Navigation = ({ currentPage, setCurrentPage }) => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-40 bg-slate-900/80 backdrop-blur-lg border-b border-slate-800">
-      <div className="max-w-7xl mx-auto px-6 py-4">
+    <nav className="fixed top-0 left-0 right-0 z-40 bg-slate-900/90 backdrop-blur-lg border-b border-slate-800">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 py-3">
         <div className="flex items-center justify-between">
-          <div className="text-2xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+          <div className="text-xl md:text-2xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
             SS
           </div>
 
@@ -217,15 +217,15 @@ const Navigation = ({ currentPage, setCurrentPage }) => {
           </div>
 
           <button
-            className="md:hidden text-white"
+            className="md:hidden text-white p-2"
             onClick={() => setIsOpen(!isOpen)}
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            {isOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
 
         {isOpen && (
-          <div className="md:hidden mt-4 pb-4 space-y-2">
+          <div className="md:hidden mt-3 pb-3 space-y-2">
             {navItems.map((item) => {
               const Icon = item.icon;
               return (
@@ -235,14 +235,14 @@ const Navigation = ({ currentPage, setCurrentPage }) => {
                     setCurrentPage(item.id);
                     setIsOpen(false);
                   }}
-                  className={`w-full flex items-center gap-2 px-4 py-3 rounded-lg transition-all duration-300 ${
+                  className={`w-full flex items-center gap-2 px-4 py-2.5 rounded-lg transition-all duration-300 ${
                     currentPage === item.id
                       ? 'bg-indigo-500 text-white'
                       : 'text-slate-300 hover:bg-slate-800'
                   }`}
                 >
-                  <Icon size={18} />
-                  {item.label}
+                  <Icon size={16} />
+                  <span className="text-sm">{item.label}</span>
                 </button>
               );
             })}
@@ -262,44 +262,45 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center px-6 overflow-hidden">
-      <div className="max-w-4xl mx-auto text-center">
+    <div className="fixed inset-0 flex items-center justify-center px-4 md:px-6 overflow-hidden pt-20 md:pt-0">
+      <div className="max-w-4xl mx-auto text-center w-full">
         <div
           className={`transform transition-all duration-1000 ${
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
           }`}
         >
-          <div className="mb-8 inline-block">
-            <div className="w-36 h-36 md:w-44 md:h-44 rounded-full bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 p-1 animate-pulse">
-              <div className="w-full h-full rounded-full bg-slate-900 flex items-center justify-center text-4xl md:text-5xl font-bold text-white">
+          <div className="mb-6 md:mb-8 inline-block">
+            <div className="w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 rounded-full bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 p-1 animate-pulse">
+              <div className="w-full h-full rounded-full bg-slate-900 flex items-center justify-center text-3xl sm:text-4xl md:text-5xl font-bold text-white">
                 SS
               </div>
             </div>
           </div>
 
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent leading-tight pb-2">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-8 bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent leading-tight pb-2">
             Satyam Soni
           </h1>
 
-          <p className="text-lg md:text-xl lg:text-2xl text-slate-300 mb-4 leading-relaxed pb-1">
+          <p className="text-sm sm:text-base md:text-xl lg:text-2xl text-slate-300 mb-3 md:mb-4 leading-relaxed pb-1 px-2">
             B.Tech in Biochemical Engineering & Biotechnology
           </p>
 
-          <p className="text-base md:text-lg text-indigo-400 mb-8 leading-relaxed pb-1">
-            Indian Institute of Technology Delhi | CGPA: 6.02
+          <p className="text-xs sm:text-sm md:text-lg text-indigo-400 mb-4 md:mb-8 leading-relaxed pb-1">
+            Indian Institute of Technology Delhi | CGPA: 7.52
           </p>
 
-          <p className="text-base md:text-lg text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed pb-2">
+          <p className="text-sm sm:text-base md:text-lg text-slate-400 mb-6 md:mb-10 max-w-2xl mx-auto leading-relaxed pb-2 px-2">
             Full-Stack Developer | ML Engineer | Cloud & DevOps Enthusiast
-            <br />
+            <br className="hidden sm:block" />
+            <span className="sm:hidden"> - </span>
             Specializing in scalable systems, microservices architecture, and AI-powered solutions
           </p>
 
-          <div className="flex flex-wrap gap-3 justify-center">
+          <div className="flex flex-wrap gap-2 md:gap-3 justify-center px-2">
             {['React', 'TypeScript', 'Node.js', 'AWS', 'Docker', 'Python', 'TensorFlow', 'Kubernetes'].map((tech, i) => (
               <span
                 key={tech}
-                className="px-4 py-2 bg-slate-800/50 rounded-full text-sm text-indigo-300 border border-indigo-500/30 hover:border-indigo-500 transition-all duration-300"
+                className="px-3 py-1.5 md:px-4 md:py-2 bg-slate-800/50 rounded-full text-xs md:text-sm text-indigo-300 border border-indigo-500/30 hover:border-indigo-500 transition-all duration-300"
                 style={{ animationDelay: `${i * 0.1}s` }}
               >
                 {tech}
@@ -584,9 +585,9 @@ export default function PortfolioApp() {
       )}
 
       <footer className="fixed bottom-0 left-0 right-0 z-30 border-t border-slate-800 bg-slate-900/95 backdrop-blur-lg">
-        <div className="max-w-7xl mx-auto px-4 py-2">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-2">
-            <p className="text-slate-400 text-xs text-center md:text-left">
+        <div className="max-w-7xl mx-auto px-6 py-4">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-3">
+            <p className="text-slate-400 text-xs md:text-sm text-center md:text-left">
               © 2025 Satyam Soni. Built with React & Tailwind CSS.
             </p>
             <div className="flex gap-6">
