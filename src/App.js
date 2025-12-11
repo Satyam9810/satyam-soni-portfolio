@@ -262,41 +262,41 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center px-4 md:px-6 overflow-hidden pt-20 md:pt-0">
-      <div className="max-w-4xl mx-auto text-center w-full">
+    <div className="fixed inset-0 flex items-center justify-center px-4 md:px-6 overflow-hidden pt-20 pb-20 md:pt-16 md:pb-24">
+      <div className="max-w-4xl mx-auto text-center w-full overflow-y-auto md:overflow-visible" style={{ maxHeight: '100%' }}>
         <div
           className={`transform transition-all duration-1000 ${
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
           }`}
         >
-          <div className="mb-6 md:mb-8 inline-block">
-            <div className="w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 rounded-full bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 p-1 animate-pulse">
+          <div className="mb-4 md:mb-6 inline-block">
+            <div className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 p-1 animate-pulse">
               <div className="w-full h-full rounded-full bg-slate-900 flex items-center justify-center text-3xl sm:text-4xl md:text-5xl font-bold text-white">
                 SS
               </div>
             </div>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-8 bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent leading-tight pb-2">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 md:mb-6 bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent leading-tight pb-2">
             Satyam Soni
           </h1>
 
-          <p className="text-sm sm:text-base md:text-xl lg:text-2xl text-slate-300 mb-3 md:mb-4 leading-relaxed pb-1 px-2">
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-300 mb-2 md:mb-3 leading-relaxed pb-1 px-2">
             B.Tech in Biochemical Engineering & Biotechnology
           </p>
 
-          <p className="text-xs sm:text-sm md:text-lg text-indigo-400 mb-4 md:mb-8 leading-relaxed pb-1">
-            Indian Institute of Technology Delhi | CGPA: 7.52
+          <p className="text-xs sm:text-sm md:text-base text-indigo-400 mb-3 md:mb-6 leading-relaxed pb-1">
+            Indian Institute of Technology Delhi | CGPA: 6.02
           </p>
 
-          <p className="text-sm sm:text-base md:text-lg text-slate-400 mb-6 md:mb-10 max-w-2xl mx-auto leading-relaxed pb-2 px-2">
+          <p className="text-sm sm:text-base md:text-base text-slate-400 mb-4 md:mb-8 max-w-2xl mx-auto leading-relaxed pb-2 px-2">
             Full-Stack Developer | ML Engineer | Cloud & DevOps Enthusiast
             <br className="hidden sm:block" />
             <span className="sm:hidden"> - </span>
             Specializing in scalable systems, microservices architecture, and AI-powered solutions
           </p>
 
-          <div className="flex flex-wrap gap-2 md:gap-3 justify-center px-2">
+          <div className="flex flex-wrap gap-2 md:gap-3 justify-center px-2 pb-4">
             {['React', 'TypeScript', 'Node.js', 'AWS', 'Docker', 'Python', 'TensorFlow', 'Kubernetes'].map((tech, i) => (
               <span
                 key={tech}
