@@ -636,8 +636,11 @@ export default function PortfolioApp() {
               </a>
               <a
                 href="mailto:satyam.soni.iitd@gmail.com"
-                className="text-slate-400 hover:text-indigo-400 transition-colors transform hover:scale-110"
-                aria-label="Email"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-slate-400 hover:text-indigo-400 transition-colors transform hover:scale-110"
+                  aria-label="Email"
+                  onClick={(e) => e.stopPropagation()}
               >
                 <Mail size={20} />
               </a>
