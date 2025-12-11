@@ -296,12 +296,12 @@ const HomePage = () => {
 
           
 
-          <p className="text-2xl sm:text-sm md:text-base text-indigo-400 mb-3 md:mb-6 leading-relaxed pb-1">
+          {/* <p className="text-2xl sm:text-sm md:text-base text-indigo-400 mb-3 md:mb-6 leading-relaxed pb-1">
             <b>Indian Institute of Technology Delhi</b>
-          </p>
+          </p> */}
 
           <p className="text-xs sm:text-base md:text-lg lg:text-xl text-slate-300 mb-2 md:mb-3 leading-relaxed pb-1 px-2">
-            B.Tech in Biochemical Engineering & Biotechnology
+            B.Tech - Indian Institute of Technology Delhi
           </p>
 
           <p className="text-sm sm:text-base md:text-base text-slate-400 mb-4 md:mb-8 max-w-2xl mx-auto leading-relaxed pb-2 px-2">
